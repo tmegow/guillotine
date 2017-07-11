@@ -60,7 +60,9 @@ _Raspberry Pi Camera Module_
   - sudo systemctl enable start_motion.service
   - (start raspivid -p -f once if you get this error (mmal_vc_component_enable failed to enable component ENOSPC)
 	
-Motion now should be capturing motion video events to your offsite server 
+Motion should have been capturing motion video events to your offsite server since you restarted autofs to apply its config. At this point if something isn't working, you should probably check if motion is running without errors. Can you see video output with raspivid? Is your autofs working with your sshfs mount? Can you touch files in your sshfs mount? Do some basic troubleshooting and post an issue if you get stuck - Cheers!
+
+I have a cleanup script for my offsite server which keeps a GCP disk slam full of video mkv files. (I found the mkv codec to be the most efficient for this purpose on the pi 3.)
 
 
 Optional Steps:
