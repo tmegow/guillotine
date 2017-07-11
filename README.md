@@ -45,8 +45,8 @@ _Raspberry Pi Camera Module_
 - Configure Motion (optimized motion config for raspberry pi)
   - #this patch file sets the motion target_dir to /opt/Video/ir
   - sudo patch < motion.patch
-- Copy ssh config file and private ssh key to /root/.ssh
-  - Connect to the video server once to add the ssh public key (id_rsa.pub) to /home/your_user/.ssh/known_hosts
+- Copy ssh config file and generate/copy your private ssh key to /root/.ssh
+  - Connect to the video server to add your ssh public key (id_rsa.pub) to your user's authorized_users file (e.g. /home/your_user/.ssh/authorized_users)
 - Enable sshfs & autofs
   - sudo apt-get install sshfs autofs
   - sudo mkdir -p /opt/Video/noir
