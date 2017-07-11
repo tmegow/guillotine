@@ -38,18 +38,18 @@
   - sudo dpkg -i pi_jessie_motion_4.0.1-1_armhf.deb
   - sudo apt-get -f intall #install missing dependencies for motion
 - Configure Motion (optimized motion config for raspberry pi)
-  - # this patch file sets the motion target_dir to /opt/Video/ir
+  - #this patch file sets the motion target_dir to /opt/Video/ir
   - sudo patch < motion.patch
 - Copy ssh config file and private ssh key to /root/.ssh
   - Connect to the video server once to add the ssh public key (id_rsa.pub) to /home/your_user/.ssh/known_hosts
 - Enable sshfs & autofs
   - sudo apt-get install sshfs autofs
   - sudo mkdir -p /opt/Video/noir
-  - # copy auto.master & auto.sshfs to /etc (ensure neither are executable (chmod 0600).
-  - # The auto.sshfs file uses this bit at the end of the line to configure the remote sshfs mount: "sshfs\#User@your_server_fqdn\:/home/User/Video/evidence/ir"
-  - # Be sure to create the remote dir on the target server, owned by the sshfs user, with appropriate permissions (I used mode 777)
+  - #copy auto.master & auto.sshfs to /etc (ensure neither are executable (chmod 0600).
+  - #The auto.sshfs file uses this bit at the end of the line to configure the remote sshfs mount: "sshfs\#User@your_server_fqdn\:/home/User/Video/evidence/ir"
+  - #Be sure to create the remote dir on the target server, owned by the sshfs user, with appropriate permissions (I used mode 777)
   - sudo systemctl restart autofs 
-  - # check mount point is working as intended (can you see the contents of the sshfs mount in /opt/Video ?)
+  - #check mount point is working as intended (can you see the contents of the sshfs mount in /opt/Video ?)
 - Enable motion auto-start systemd service
   - #copy start_motion.service to /etc/systemd/system
   - sudo systemctl enable start_motion.service
