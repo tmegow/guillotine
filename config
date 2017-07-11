@@ -1,0 +1,5 @@
+Host your_server
+    User Username
+    HostName your_server_fqdn
+    Port 22
+    IdentityFile /home/pi/.ssh/id_rsa

@@ -1,0 +1,10 @@
+[Unit]
+Description=Start Motion at System Startup
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/motion
+Restart=always
+
+[Install]
+WantedBy=autofs.service

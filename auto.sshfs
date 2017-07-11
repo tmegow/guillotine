@@ -1,0 +1,1 @@
+ir -fstype=fuse,rw,IdentityFile=/root/.ssh/id_rsa,uid=1000,gid=1000,noatime,allow_other :sshfs\#User@your_server_fqdn\:/home/User/Video/evidence/ir

@@ -1,0 +1,143 @@
+--- motion_orig.conf	2017-03-18 17:09:52.671864712 +0000
++++ motion.conf	2017-03-18 22:48:58.315938665 +0000
+@@ -8,10 +8,10 @@
+ ############################################################
+ 
+ # Start in daemon (background) mode and release terminal (default: off)
+-daemon off
++daemon on
+ 
+ # File to store the process ID, also called pid file. (default: not defined)
+-process_id_file /var/run/motion/motion.pid
++process_id_file /opt/motion.pid
+ 
+ ############################################################
+ # Basic Setup Mode
+@@ -36,7 +36,7 @@
+ 
+ # Videodevice to be used for capturing  (default /dev/video0)
+ # for FreeBSD default is /dev/bktr0
+-videodevice /dev/video0
++#videodevice /dev/video0
+ 
+ # v4l2_palette allows one to choose preferable palette to be use by motion
+ # to capture from those supported by your videodevice. (default: 17)
+@@ -104,7 +104,7 @@
+ 
+ # Maximum number of frames to be captured per second.
+ # Valid range: 2-100. Default: 100 (almost no limit).
+-framerate 2
++framerate 4
+ 
+ # Minimum time in seconds between capturing picture frames from the camera.
+ # Default: 0 = disabled - the capture rate is given by the camera framerate.
+@@ -142,11 +142,11 @@
+ 
+ # Name of camera to use if you are using a camera accessed through OpenMax/MMAL
+ # Default: Not defined
+-; mmalcam_name vc.ril.camera
++ mmalcam_name vc.ril.camera
+ 
+ # Camera control parameters (see raspivid/raspistill tool documentation)
+ # Default: Not defined
+-; mmalcam_control_params -hf
++ mmalcam_control_params -hf
+ 
+ # Let motion regulate the brightness of a video device (default: off).
+ # The auto_brightness feature uses the brightness option as its target value.
+@@ -193,7 +193,8 @@
+ 
+ # Threshold for number of changed pixels in an image that
+ # triggers motion detection (default: 1500)
+-threshold 1500
++#threshold 1500
++threshold 400
+ 
+ # Automatically tune the threshold down if possible (default: off)
+ threshold_tune off
+@@ -239,7 +240,7 @@
+ # Recommended range: 0 to 5 (default: 0)
+ # Do not use large values! Large values will cause Motion to skip video frames and
+ # cause unsmooth movies. To smooth movies use larger values of post_capture instead.
+-pre_capture 0
++pre_capture 1
+ 
+ # Number of frames to capture after motion is no longer detected (default: 0)
+ post_capture 0
+@@ -250,11 +251,11 @@
+ # events causing all Motion to be written to one single movie file and no pre_capture.
+ # If set to 0, motion is running in gapless mode. Movies don't have gaps anymore. An
+ # event ends right after no more motion is detected and post_capture is over.
+-event_gap 60
++event_gap 5
+ 
+ # Maximum length in seconds of a movie
+ # When value is exceeded a new movie file is created. (Default: 0 = infinite)
+-max_movie_time 0
++max_movie_time 60
+ 
+ # Always save images even if there was no motion (default: off)
+ emulate_motion off
+@@ -270,13 +271,13 @@
+ # Picture with most motion of an event is saved when set to 'best'.
+ # Picture with motion nearest center of picture is saved when set to 'center'.
+ # Can be used as preview shot for the corresponding movie.
+-output_pictures on
++output_pictures off
+ 
+ # Output pictures with only the pixels moving object (ghost images) (default: off)
+ output_debug_pictures off
+ 
+ # The quality (in percent) to be used by the jpeg compression (default: 75)
+-quality 75
++quality 100
+ 
+ # Type of output images
+ # Valid values: jpeg, ppm (default: jpeg)
+@@ -312,7 +313,7 @@
+ # ffmpeg_bps is ignored if variable bitrate is enabled.
+ # Valid values: 0 (default) = fixed bitrate defined by ffmpeg_bps,
+ # or the range 1 - 100 where 1 means worst quality and 100 is best.
+-ffmpeg_variable_bitrate 0
++ffmpeg_variable_bitrate 100
+ 
+ # Codec to used by ffmpeg for the video compression.
+ # Timelapse videos have two options.
+@@ -333,7 +334,8 @@
+ # mp4 - MPEG-4 Part 14 H264 encoding
+ # mkv - Matroska H264 encoding
+ # hevc - H.265 / HEVC (High Efficiency Video Coding)
+-ffmpeg_video_codec mpeg4
++#ffmpeg_video_codec mpeg4
++ffmpeg_video_codec mkv
+ 
+ # When creating videos, should frames be duplicated in order 
+ # to keep up with the requested frames per second
+@@ -447,7 +449,7 @@
+ 
+ # Target base directory for pictures and films
+ # Recommended to use absolute path. (Default: current working directory)
+-#target_dir /tmp/motion
++target_dir /opt/Video/ir
+ 
+ # File path for snapshots (jpeg or ppm) relative to target_dir
+ # Default: %v-%Y%m%d%H%M%S-snapshot
+@@ -488,7 +490,8 @@
+ ############################################################
+ 
+ # The mini-http server listens to this port for requests (default: 0 = disabled)
+-stream_port 8081
++#stream_port 8081
++stream_port 0
+ 
+ # Quality of the jpeg (in percent) images produced (default: 50)
+ stream_quality 50
+@@ -531,7 +534,7 @@
+ ############################################################
+ 
+ # TCP/IP port for the http server to listen on (default: 0 = disabled)
+-webcontrol_port 8080
++webcontrol_port 0
+ 
+ # Restrict control connections to localhost only (default: on)
+ webcontrol_localhost on
