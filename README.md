@@ -4,9 +4,9 @@ _Raspberry Pi 3_
 _Raspberry Pi Camera Module_  
 
 - Download Raspbian Jessie Lite and install it on an SD card (e.g. OS X example commands shown below)
-  - # unmount disk before writing to it with dd. /dev/disk2 merely an example here (use your SD card device file)
+  - #unmount disk before writing to it with dd. /dev/disk2 merely an example here (use your SD card device file)
   - diskutil unmountDisk /dev/disk2 
-  - # replace /dev/disk2 with the device file of your SD card
+  - #replace /dev/disk2 with the device file of your SD card
   - sudo dd bs=1 if=raspian_image.dmg of=/dev/disk2 
 - Boot raspbian and append this to the bottom of /boot/config.txt
   - gpu_mem=880
