@@ -47,14 +47,14 @@ _Raspberry Pi Camera Module_
 - Configure Motion (optimized motion config for raspberry pi)
   - #this patch file sets the motion target_dir to /opt/Video/ir
   - sudo patch < motion.patch
-- Copy ssh config file and generate/copy your private ssh key to /root/.ssh
+- Copy ssh config file and generate/copy your private ssh key to /root/.ssh/id_rsa (remember to chmod 0400)
   - Connect to the video server to add your ssh public key (id_rsa.pub) to your user's authorized_users file (e.g. /home/your_user/.ssh/authorized_users)
 - Enable sshfs & autofs
   - sudo apt-get install sshfs autofs
   - sudo mkdir -p /opt/Video/noir
   - #copy auto.master & auto.sshfs to /etc (ensure neither are executable (chmod 0600).
   - #The auto.sshfs file uses this bit at the end of the line to configure the remote sshfs mount: "sshfs\#User@your_server_fqdn\:/home/User/Video/evidence/ir"
-  - #Be sure to create the remote dir on the target server, owned by the sshfs user, with appropriate permissions (I used mode 777)
+  - #Be sure to create the remote dir on the target server, owned by the sshfs user, with appropriate permissions (I used mode 777 because more restrictive perms weren't playing nice with sshfs)
   - sudo systemctl restart autofs 
   - #check mount point is working as intended (can you see the contents of the sshfs mount in /opt/Video ?)
 - Enable motion auto-start systemd service
