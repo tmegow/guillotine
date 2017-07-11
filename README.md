@@ -41,7 +41,7 @@ _Raspberry Pi Camera Module_
 - Install motion			
   - wget https://github.com/Motion-Project/motion/releases/download/release-4.0.1/pi_jessie_motion_4.0.1-1_armhf.deb
   - sudo dpkg -i pi_jessie_motion_4.0.1-1_armhf.deb
-  - sudo apt-get -f intall #install missing dependencies for motion
+  - sudo apt-get -f install #install missing dependencies for motion
 - Configure Motion (optimized motion config for raspberry pi)
   - #this patch file sets the motion target_dir to /opt/Video/ir
   - sudo patch < motion.patch
