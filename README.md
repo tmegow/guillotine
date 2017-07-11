@@ -1,3 +1,7 @@
+# Guillotine - using Raspberry Pi 3, motion, ffmpeg, sshfs, and autofs to capture motion video events to an offsite server.
+## Prerequisites
+## - Raspberry Pi 3
+## - Raspberry Pi Camera Module
 - Download Raspbian Jessie Lite and install it on an SD card (e.g. OS X example commands shown below)
   - diskutil unmountDisk /dev/disk2
   - sudo dd bs=1 if=raspian_image.dmg -of /dev/disk2
