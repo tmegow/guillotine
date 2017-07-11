@@ -45,11 +45,11 @@
 - Enable sshfs & autofs
 	sudo apt-get install sshfs autofs
 	sudo mkdir -p /opt/Video/noir
-	# copy auto.master & auto.sshfs to /etc (ensure neither are executable (chmod 0600).
+        # copy auto.master & auto.sshfs to /etc (ensure neither are executable (chmod 0600).
         # The auto.sshfs file uses this bit at the end of the line to configure the remote sshfs mount: "sshfs\#User@your_server_fqdn\:/home/User/Video/evidence/ir"
         # Be sure to create the remote dir on the target server, owned by the sshfs user, with appropriate permissions (I used mode 777)
 	sudo systemctl restart autofs 
-	# check mount point is working as intended (can you see the contents of the sshfs mount in /opt/Video ?)
+        # check mount point is working as intended (can you see the contents of the sshfs mount in /opt/Video ?)
 - Enable motion auto-start systemd service
 	#copy start_motion.service to /etc/systemd/system
 	sudo systemctl enable start_motion.service
